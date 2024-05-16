@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Dropdown from "../Dropdown/Dropdown";
+import FilteredList from "../FilteredList/FilteredList";
 import style from "./Filter.module.scss";
 
 type FilterConfig<T> = {
@@ -49,14 +50,7 @@ const Filter = <T extends Record<string, any>>({
           onChange={(value) => handleFilterChange(key, value)}
         />
       ))}
-      <div>
-        <h3>Filtered Items</h3>
-        <ul>
-          {filteredItems.map((item) => (
-            <li key={item.id}>{item.name}</li>
-          ))}
-        </ul>
-      </div>
+      <FilteredList filteredItems={filteredItems} />
     </div>
   );
 };
